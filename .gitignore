@@ -1,0 +1,23 @@
+# Secrets and local data
+.env
+.env.*
+!.env.example
+flaskgpt.db
+*.sqlite
+*.sqlite3
+*.db
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Node and generated assets
+node_modules/
+
+# Editors and operating systems
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

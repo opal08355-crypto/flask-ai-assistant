@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FlaskGPT</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+  <script defer src="{{ url_for('static', filename='app.js') }}"></script>
+</head>
+<body>
+<header><div><h1>FlaskGPT</h1><p>Your intelligent assistant</p></div><button id="new-chat" class="primary">＋ New conversation</button></header>
+<main>
+  <aside>
+    <label>Saved conversations<select id="conversation-list"><option value="">Choose a conversation…</option></select></label>
+    <label>Conversation domain<select id="domain"><option value="general">General</option><option value="informatics">IT</option><option value="finance">Finance</option><option value="data_analysis">Data analysis</option><option value="other">Other</option></select></label>
+    <section><h2>Sources</h2><p class="hint">Add text sources, then select which to consult.</p><div id="source-list"></div>
+      <form id="source-form"><input id="source-name" placeholder="Source name" required><textarea id="source-text" placeholder="Paste source text…" rows="3" required></textarea><button>Add source</button></form>
+      <label>Excerpts per source<input id="excerpt-count" type="number" min="1" max="10" value="3"></label>
+    </section>
+    <section><h2>Conversation tools</h2><div class="button-stack"><button data-export="txt">Export TXT</button><button data-export="json">Export JSON</button><button data-export="pdf">Export PDF</button><button id="summary-pdf">Generate summary PDF</button></div><div id="metrics" class="metrics">No response metrics yet.</div></section>
+    <section><h2>Data quality analysis</h2><p class="hint">Import CSV or SQLite (.db/.sqlite) for a quality report.</p><form id="data-form"><input type="file" id="data-file" accept=".csv,.db,.sqlite,.sqlite3" required><button>Analyze file</button></form><div id="data-report"></div></section>
+  </aside>
+  <section class="chat"><div id="messages" aria-live="polite"><div class="welcome">Ask a question to start. Your conversations are saved locally in SQLite.</div></div>
+    <form id="prompt-form"><textarea id="prompt" rows="2" placeholder="Ask your question…" required></textarea><button class="primary" id="send">Send</button></form>
+    <div id="status" role="status"></div>
+  </section>
+</main>
+<footer>Response time and token counts are shown; token counts may be estimates.</footer>
+</body></html>
